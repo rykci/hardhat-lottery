@@ -100,9 +100,6 @@ describe("Lottery Tests", async () => {
     const entranceFee = await lottery.getEntranceFee();
     await lottery.startLottery();
     await lottery.enter({ value: entranceFee });
-    console.log(
-      `LOTTERY BALANCE: ${await ethers.provider.getBalance(lottery.address)}`
-    );
     expect(await lottery.players(0)).is.equal(owner.address);
   });
 
