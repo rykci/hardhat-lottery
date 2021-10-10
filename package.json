@@ -21,6 +21,7 @@
     "@chainlink/contracts": "^0.2.2",
     "@openzeppelin/contracts": "^4.3.2",
     "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
     "mocha": "^9.1.2"
   }
 }

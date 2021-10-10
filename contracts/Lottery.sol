@@ -36,6 +36,7 @@ contract Lottery is VRFConsumerBase {
     }
 
     function enter() public payable {
+        require(lotteryState == LOTTERY_STATE.OPEN, "Lottery is not open");
         require(msg.value >= getEntranceFee(), "Not enough ETH");
         players.push(payable(msg.sender));
     }
@@ -44,7 +45,6 @@ contract Lottery is VRFConsumerBase {
         (, int256 price, , , ) = ethUsdPriceFeed.latestRoundData();
         uint256 adjustedPrice = uint256(price) * 10**10;
         uint256 entranceFeeInWei = (usdEntryFee * 10**18) / adjustedPrice;
-        console.log("The Entrance Fee in Wei is %s", entranceFeeInWei);
         return entranceFeeInWei;
     }
 
